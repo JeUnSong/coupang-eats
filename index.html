@@ -57,7 +57,7 @@
                 if(playCoverIndex == 0 ) {
                     playurl = 'https://www.youtube.com/embed/gS65eGciMfc?autoplay=1&controls=0&showinfo=0&rel=0&mute=1';
                 }
-                playHtml += '<iframe width="100%" height="250" src="' + playurl +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                playHtml += '<iframe width="100%" height="280" src="' + playurl +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                 $(this).find('.yt_box').html(playHtml);
             });
 
@@ -65,6 +65,8 @@
     </script>
     <style>
         * { box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;}
+        /*컨테이너 상하 여백*/
+        .container{padding-top: 50px;padding-bottom: 50px;}
 
         /*헤더 색깔*/
         #header{
@@ -76,12 +78,14 @@
         /*로고 크기 & 위치*/
         #header img{
             width: 163px;
-            margin-left: 640px;
+            margin-left: 240px;
             margin-top: 18px;
         }
-        /*구매 입점 위치*/
-        #store-request{
+        /* 구매 입점 위치 */
+        /* #header .container{
             margin-right: 380px;
+        } */
+        #store-request{
             margin-top: 20px;
         }
 
@@ -101,16 +105,12 @@
             overflow: hidden;
             z-index: -99999;
         }
-
-        /*비디오 크기 및 위치*/
         .video-background {
             background: #000;
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
             z-index: -1;
         }
-
-        /*비디오 크기 및 위치*/
         .video-foreground,
         .video-background iframe {
             position: absolute;
@@ -124,7 +124,6 @@
         /*동영상 위 멘트*/
         .video-foreground>h1{
             font-size: 60px;
-            font-family: Roboto;
             font-weight: bold;
             position: absolute !important;
             left: 380px!important;
@@ -191,8 +190,21 @@
             background-color: #F3F1F1;
         }
 
-        /*스토리 폰트 사이즈*/
+        #store-img{
+            margin-top: 100px;
+        }
+        .col-sm-6 .video-box .yt_box {
+            width: 100%;
+            height: 280px;
+            margin-top: 40px;
+            background: url("img/back/pic02.png") no-repeat center top;
+            background-size: contain;
+            cursor: pointer;            
+        }      
+
+        /*컨텐츠 요소 세팅*/
         .row .col1 {
+            margin-top: 30px;
             padding-top: 30px;
             color: #000;
             font-size: 30px;
@@ -201,8 +213,7 @@
             line-height: 1;
         }
         .row .btn{
-            
-            margin-top: 70px;
+            margin-top: 10px;
             padding-top: 15px;
             text-align: center;
             font-size: 17px;
@@ -217,12 +228,6 @@
             line-height: 1.5;
             font-weight: 500;
         }
-        #store-img{
-            margin-top: 100px;
-        }
-
-
-        /*컨텐츠 요소 세팅*/
         .caption h3{
             color: #FFF;
             font-weight: bold;
@@ -234,25 +239,28 @@
             font-weight: bold;
             padding-top: 10px;
         }
-        #contents-box{
-            padding-top: 80px;
-            padding-bottom: 30px;
-        }
 
         #contents-box .col-sm-4{
-            padding-top: 130px;
-            padding-left: 30px;
             height: 300px;
-            float:left;
-            margin-right: 30px;
+            background-repeat: no-repeat;  
             background-position: center;
             background-size: cover;
         }
+        .col-sm-4{border: 10px solid #F2F0F0;}
 
-        #contents-box .col-sm-4:nth-child(1){background-image: url("/img/back/food.png");}
-        #contents-box .col-sm-4:nth-child(2){background-image: url("/img/back/phone.jpeg");}
-        #contents-box .col-sm-4:nth-child(3){ background-image: url("/img/back/cheetah.jpg");}
+        .col-sm-4,.col-sm-6{overflow: hidden;} 
+        .col-sm-4 .caption{
+            position: absolute;
+            padding-top: 130px;
+            padding-left: 30px;
+            color: white;
+        }  
 
+        #contents-box .col-sm-4:nth-child(1){background-image: url("img/back/food.png");}
+        #contents-box .col-sm-4:nth-child(2){background-image: url("img/back/phone.jpeg");}
+        #contents-box .col-sm-4:nth-child(3){ background-image: url("img/back/cheetah.jpg");}
+
+        /*서비스 요소 세팅*/
         #service h2{
             margin-top: 30px;
             font-weight: bold;
@@ -278,24 +286,43 @@
             font-size: 20px;
             font-weight:bold;
         }
-
+        /*footer 요소 세팅*/
         #footer{
             color: #FFF;
             background-color: #091020;
         }
 
         #footer #sns{
-            padding-top: 60px;
             font-size: 30px;
             word-spacing: 10px;
         }
 
         #footer p{
             margin-top: 60px;
-            padding-bottom: 50px;
             font-weight: 300;
         }
 
+        #footer .fab{
+            display: inline-block;
+            color: white !important;
+            border:2px solid white;           
+            border-radius: 50%;
+            padding: 15px !important;
+            font-size: 20px;
+            transition:all 0.5s;
+            cursor: pointer;
+        }
+
+        #footer .fab:hover{
+            display: inline-block;
+            color: rgb(255, 255, 255) !important;
+            border:2px solid rgb(255, 73, 18);
+            background-color: rgb(255, 73, 18);           
+            border-radius: 50%;
+            padding: 15px !important;
+            font-size: 20px;
+            cursor: pointer;
+        }
         @media (min-aspect-ratio: 16/9) {
         .video-foreground { height: 300%; top: -100%; }
         }
@@ -304,21 +331,28 @@
         .video-foreground { width: 300%; left: -100%; }
         }
         @media screen and (max-width:767px){
-            #video h1{left: 20px !important; font-size: 25px;}
+            #video h1{left:10px !important;font-size: 30px;}
+            #store-request{width:100%;padding-bottom:30px;}
+            #header{height: 100px;}
+            #header img{margin-left: 0px; margin-top: -30px;}
+            #video-box{width: 500px; height: 300px;}
+            #slider{width:90%;}
         }
     </style>
 </head>
 <body>
     <!--헤더--------------------------------------------------------------------------------------------------------------------------->
     <div id="header" class="container-fluid text-center">
-        <div id="store-request">
-            <i class="fas fa-hands-helping" ></i> 
-            <span>구매/제휴문의</span>&nbsp;
-            <i class="fas fa-store" ></i> 
-            <span>입점 상담신청</span>
+        <div class="container" style="padding: 0 !important;">
+            <div id="store-request">
+                <i class="fas fa-hands-helping" ></i> 
+                <span>구매/제휴문의</span>&nbsp;
+                <i class="fas fa-store" ></i> 
+                <span>입점 상담신청</span>
+            </div>
+            <img src="img/back/logo.png">
         </div>
-        <img src="/MyProject3/img/back/logo.png">
-    </div>
+    </div><!--헤더-->
 
     <!-- 비디오 ----------------------------------------------------------------------------------------------------------------------------->
     <div id="video-box">
@@ -344,41 +378,41 @@
         <div class="container text-center">
             <h3>매주 다양한 인기브랜드 할인을 만나보세요!</h3>
             <div class="slider">
-                <div><img src="/img/brand/1.png" alt=""></div>
-                <div><img src="/img/brand/2.png" alt=""></div>
-                <div><img src="/img/brand/3.png" alt=""></div>
-                <div><img src="/img/brand/4.png" alt=""></div>
-                <div><img src="/img/brand/5.png" alt=""></div>
-                <div><img src="/img/brand/6.png" alt=""></div>
-                <div><img src="/img/brand/7.png" alt=""></div>
-                <div><img src="/img/brand/8.png" alt=""></div>
-                <div><img src="/img/brand/9.png" alt=""></div>
-                <div><img src="/img/brand/10.png" alt=""></div>
-                <div><img src="/img/brand/11.png" alt=""></div>
-                <div><img src="/img/brand/12.png" alt=""></div>
-                <div><img src="/img/brand/13.png" alt=""></div>
-                <div><img src="/img/brand/14.png" alt=""></div>
-                <div><img src="/img/brand/15.png" alt=""></div>
-                <div><img src="/img/brand/16.png" alt=""></div>
-                <div><img src="/img/brand/17.png" alt=""></div>
-                <div><img src="/img/brand/18.png" alt=""></div>
-                <div><img src="/img/brand/19.png" alt=""></div>
-                <div><img src="/img/brand/20.png" alt=""></div>
-                <div><img src="/img/brand/21.png" alt=""></div>
-                <div><img src="/img/brand/22.png" alt=""></div>
-                <div><img src="/img/brand/23.png" alt=""></div>
-                <div><img src="/img/brand/24.png" alt=""></div>
-                <div><img src="/img/brand/25.png" alt=""></div>
-                <div><img src="/img/brand/26.png" alt=""></div>
-                <div><img src="/img/brand/27.png" alt=""></div>
-                <div><img src="/img/brand/28.png" alt=""></div>
-                <div><img src="/img/brand/29.png" alt=""></div>
-                <div><img src="/img/brand/30.png" alt=""></div>
-                <div><img src="/img/brand/31.png" alt=""></div>
+                <div><img src="img/brand/1.png" alt=""></div>
+                <div><img src="img/brand/2.png" alt=""></div>
+                <div><img src="img/brand/3.png" alt=""></div>
+                <div><img src="img/brand/4.png" alt=""></div>
+                <div><img src="img/brand/5.png" alt=""></div>
+                <div><img src="img/brand/6.png" alt=""></div>
+                <div><img src="img/brand/7.png" alt=""></div>
+                <div><img src="img/brand/8.png" alt=""></div>
+                <div><img src="img/brand/9.png" alt=""></div>
+                <div><img src="img/brand/10.png" alt=""></div>
+                <div><img src="img/brand/11.png" alt=""></div>
+                <div><img src="img/brand/12.png" alt=""></div>
+                <div><img src="img/brand/13.png" alt=""></div>
+                <div><img src="img/brand/14.png" alt=""></div>
+                <div><img src="img/brand/15.png" alt=""></div>
+                <div><img src="img/brand/16.png" alt=""></div>
+                <div><img src="img/brand/17.png" alt=""></div>
+                <div><img src="img/brand/18.png" alt=""></div>
+                <div><img src="img/brand/19.png" alt=""></div>
+                <div><img src="img/brand/20.png" alt=""></div>
+                <div><img src="img/brand/21.png" alt=""></div>
+                <div><img src="img/brand/22.png" alt=""></div>
+                <div><img src="img/brand/23.png" alt=""></div>
+                <div><img src="img/brand/24.png" alt=""></div>
+                <div><img src="img/brand/25.png" alt=""></div>
+                <div><img src="img/brand/26.png" alt=""></div>
+                <div><img src="img/brand/27.png" alt=""></div>
+                <div><img src="img/brand/28.png" alt=""></div>
+                <div><img src="img/brand/29.png" alt=""></div>
+                <div><img src="img/brand/30.png" alt=""></div>
+                <div><img src="img/brand/31.png" alt=""></div>
             </div>
             <a href="#" class="btn btn-primary">지금 설치하고 받기</a>
             <br>
-            <img src="/MyProject3/img/back/QR.jpeg">
+            <img src="img/back/QR.jpeg">
             <p>* PC로 접속하신 경우, QR코드를 통해 쿠팡이츠 앱을 설치 하실 수 있습니다.</p><br>
             <p style="padding-bottom: 50px;">* 할인 금액은 주차 별로 상이할 수 있습니다.</p>
         </div>
@@ -407,8 +441,6 @@
                     이젠, 맛집도 쿠팡이츠로 주문하세요.</p>
             </div>
             <div id="store-img" class="col-sm-6">
-                <!-- <img editor_component="image_link" height="0" src="/MyProject3/img/back/pic01.png" style="width: 600px; height: 300px;" width="0" /></p> -->
-                <!-- <iframe frameborder="0" height="300" src="https://www.youtube.com/embed/gS65eGciMfc" width="500"></iframe></p> -->
                 <div class="video-box" name="playCover" >
                     <div class="yt_box" title="동영상 보기"></div>
                   </div>
